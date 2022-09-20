@@ -2,8 +2,6 @@
 
 CREATE OR REPLACE FUNCTION write_smth() RETURNS varchar
 AS $$
-DECLARE 
-	my_string varchar;
 BEGIN
 	RETURN 'Hello!';
 END
@@ -13,8 +11,6 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION write_cur_date() RETURNS date
 AS $$
-DECLARE 
-	my_string date;
 BEGIN
 	RETURN NOW();
 END
@@ -25,9 +21,16 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION do_math(a int, b int) RETURNS int
 AS $$
-DECLARE 
-	res int;
 BEGIN
 	RETURN a*b;
 END
 $$ LANGUAGE plpgsql;
+
+4. Написать программу двумя способами 1 - использование IF, 2 - использование CASE. 
+Объявите числовую переменную и присвоейте ей значение. 
+Если число равно 
+5 - выведите на экран "Отлично". 
+4 - "Хорошо". 
+3 - Удовлетворительно". 
+2 - "Неуд". 
+В остальных случаях выведите на экран сообщение, что введённая оценка не верна.
