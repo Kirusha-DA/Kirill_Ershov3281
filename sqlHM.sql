@@ -9,3 +9,6 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
+2. Выведите на экран текущую дату
+
+
