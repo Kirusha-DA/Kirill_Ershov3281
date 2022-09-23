@@ -196,4 +196,17 @@ BEGIN
 END;
 $$;
 
+--8.Напишите функцию, которая возвращает количество человек родившихся в заданном году.
+
+CREATE OR REPLACE FUNCTION birth_count(birth_date date) RETURNS int
+AS $$
+DECLARE 
+	my_count int;
+BEGIN
+	SELECT COUNT(*) INTO my_count
+	FROM people
+	WHERE people.birth_date = birth_count.birth_date;
+	RETURN my_count;
+END
+$$ LANGUAGE plpgsql;
 
