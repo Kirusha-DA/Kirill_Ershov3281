@@ -34,3 +34,24 @@ $$ LANGUAGE plpgsql;
 3 - Удовлетворительно". 
 2 - "Неуд". 
 В остальных случаях выведите на экран сообщение, что введённая оценка не верна.
+
+a)
+CREATE OR REPLACE FUNCTION string_marks(integer_mark int) RETURNS varchar
+AS $$
+DECLARE 
+	res varchar;
+BEGIN
+	CASE integer_mark
+		WHEN 5 THEN res := 'Отлично';
+		WHEN 4 THEN res := 'Хорошо';
+		WHEN 3 THEN res := 'Удовлетворительно';
+		WHEN 2 THEN res := 'Неуд';
+		ELSE res := 'Оценка не верна';
+	END CASE;
+	RETURN res;
+END
+$$ LANGUAGE plpgsql;
+
+b)
+
+
