@@ -35,8 +35,6 @@ $$ LANGUAGE plpgsql;
 2 - "Неуд". 
 В остальных случаях выведите на экран сообщение, что введённая оценка не верна.
 
-a)
-
 CREATE OR REPLACE FUNCTION string_marks(integer_mark int) RETURNS varchar
 AS $$
 DECLARE 
@@ -53,7 +51,6 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
-b)
 
 CREATE OR REPLACE FUNCTION string_marks(integer_mark int) RETURNS varchar
 AS $$
@@ -77,8 +74,6 @@ $$ LANGUAGE plpgsql;
 
 5. Выведите все квадраты чисел от 20 до 30 3-мя разными способами (LOOP, WHILE, FOR).
 
-a)
-
 CREATE OR REPLACE PROCEDURE pow_nums()
 LANGUAGE plpgsql
 AS $$
@@ -93,8 +88,6 @@ BEGIN
 END;
 $$;
 
-b)
-
 DO $$
 DECLARE 
 	nums int := 20;
@@ -107,7 +100,6 @@ BEGIN
 END;
 $$;
 
-c)
 
 DO $$
 DECLARE 
@@ -127,7 +119,6 @@ $$;
 написать процедуру, которая выводит все числа последовательности. 
 Входной параметр - начальное число.
 
-a)
 
 CREATE OR REPLACE FUNCTION collatz_alg(n int) RETURNS int
 AS $$
@@ -144,8 +135,6 @@ BEGIN
 	RETURN n;
 END
 $$ LANGUAGE plpgsql;
-
-b)
 
 CREATE OR REPLACE PROCEDURE collatz_alg_p(INOUT n int)
 LANGUAGE plpgsql
