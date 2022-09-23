@@ -36,6 +36,7 @@ $$ LANGUAGE plpgsql;
 В остальных случаях выведите на экран сообщение, что введённая оценка не верна.
 
 a)
+
 CREATE OR REPLACE FUNCTION string_marks(integer_mark int) RETURNS varchar
 AS $$
 DECLARE 
@@ -53,6 +54,7 @@ END
 $$ LANGUAGE plpgsql;
 
 b)
+
 CREATE OR REPLACE FUNCTION string_marks(integer_mark int) RETURNS varchar
 AS $$
 DECLARE 
@@ -76,6 +78,7 @@ $$ LANGUAGE plpgsql;
 5. Выведите все квадраты чисел от 20 до 30 3-мя разными способами (LOOP, WHILE, FOR).
 
 a)
+
 CREATE OR REPLACE PROCEDURE pow_nums()
 LANGUAGE plpgsql
 AS $$
@@ -91,6 +94,7 @@ END;
 $$;
 
 b)
+
 DO $$
 DECLARE 
 	DECLARE nums int := 20;
@@ -104,6 +108,7 @@ END;
 $$;
 
 c)
+
 DO $$
 DECLARE 
 BEGIN
@@ -112,6 +117,8 @@ BEGIN
 	END LOOP;
 END;
 $$;
+
+
 
 
 
