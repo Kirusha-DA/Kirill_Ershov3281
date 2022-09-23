@@ -73,4 +73,22 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
+5. Выведите все квадраты чисел от 20 до 30 3-мя разными способами (LOOP, WHILE, FOR).
+
+a)
+CREATE OR REPLACE PROCEDURE pow_nums()
+LANGUAGE plpgsql
+AS $$
+DECLARE 
+	DECLARE nums int := 20;
+BEGIN
+	LOOP
+		EXIT WHEN nums > 30;
+		RAISE NOTICE 'number: %',nums*nums;
+		nums := nums + 1;
+	END LOOP;
+END;
+$$;
+
+
 
