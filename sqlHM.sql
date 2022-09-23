@@ -53,5 +53,24 @@ END
 $$ LANGUAGE plpgsql;
 
 b)
+CREATE OR REPLACE FUNCTION string_marks(integer_mark int) RETURNS varchar
+AS $$
+DECLARE 
+	res varchar;
+BEGIN
+	IF (integer_mark = 5) THEN 
+		res := 'Отлично';
+	ELSIF (integer_mark = 4) THEN
+		res := 'Хоршо';
+	ELSIF (integer_mark = 3) THEN
+		res := 'Удовлетворительно';
+	ELSIF (integer_mark = 2) THEN
+		res := 'Неуд';
+	ELSE
+		res := 'Оценка не верна';
+	END IF;
+	RETURN res;
+END
+$$ LANGUAGE plpgsql;
 
 
