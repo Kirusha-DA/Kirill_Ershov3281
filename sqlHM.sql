@@ -97,7 +97,7 @@ b)
 
 DO $$
 DECLARE 
-	DECLARE nums int := 20;
+	nums int := 20;
 BEGIN
 	WHILE (nums <= 30)
 	LOOP
@@ -118,7 +118,52 @@ BEGIN
 END;
 $$;
 
+6. Последовательность Коллатца. Берётся любое натуральное число. 
+Если чётное - делим его на 2, если нечётное, то умножаем его на 3 и прибавляем 1.
+Такие действия выполняются до тех пор, пока не будет получена единица. 
+Гипотеза заключается в том, что какое бы начальное число n не было выбрано, 
+всегда получится 1 на каком-то шаге. Задания: написать функцию, 
+входной параметр - начальное число, на выходе - количество чисел, пока не получим 1;
+написать процедуру, которая выводит все числа последовательности. 
+Входной параметр - начальное число.
 
+a)
 
+CREATE OR REPLACE FUNCTION collatz_alg(n int) RETURNS int
+AS $$
+BEGIN
+	WHILE (n != 1)
+	LOOP
+		CASE n % 2
+			WHEN 0 
+				THEN n := n / 2;
+			ELSE 
+				n := n * 3 + 1;
+		END CASE;
+	END LOOP;
+	RETURN n;
+END
+$$ LANGUAGE plpgsql;
+
+b)
+
+CREATE OR REPLACE PROCEDURE collatz_alg_p(INOUT n int)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+	WHILE (n != 1)
+	LOOP
+		CASE n % 2
+			WHEN 0 
+				THEN RAISE NOTICE 'numbers: %', n;
+				 n := n / 2;
+			ELSE 
+				RAISE NOTICE 'numbers: %', n;
+				n := n * 3 + 1;
+		END CASE;
+	END LOOP;
+	RAISE NOTICE 'numbers: %', n;
+END
+$$;
 
 
