@@ -91,5 +91,27 @@ END;
 $$;
 
 b)
+DO $$
+DECLARE 
+	DECLARE nums int := 20;
+BEGIN
+	WHILE (nums <= 30)
+	LOOP
+		RAISE NOTICE 'number: %',nums*nums;
+		nums := nums + 1;
+	END LOOP;
+END;
+$$;
+
+c)
+DO $$
+DECLARE 
+BEGIN
+	FOR i IN 20..30 LOOP
+		RAISE NOTICE 'number: %',i*i;
+	END LOOP;
+END;
+$$;
+
 
 
