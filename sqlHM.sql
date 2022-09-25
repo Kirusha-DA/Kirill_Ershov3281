@@ -223,3 +223,16 @@ BEGIN
 	RETURN my_count;
 END
 $$ LANGUAGE plpgsql;
+
+--10.Напишите функцию, которая возвращает ID самого молодого человека в таблице
+
+CREATE FUNCTION youngest() RETURNS SETOF int AS
+$BODY$
+BEGIN
+    RETURN QUERY 
+		SELECT p.id           
+	    FROM people p
+		WHERE p.birth_date = (SELECT MAX(birth_date) FROM people);
+END;
+$BODY$
+LANGUAGE plpgsql;
