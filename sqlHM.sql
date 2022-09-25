@@ -210,3 +210,16 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
+--9.Напишите функцию, которая возвращает количество человек с заданным цветом глаз.
+
+CREATE OR REPLACE FUNCTION get_by_eyes(color varchar) RETURNS int
+AS $$
+DECLARE 
+	my_count int;
+BEGIN
+	SELECT COUNT(*) INTO my_count
+	FROM people
+	WHERE people.eyes = get_by_eyes.color;
+	RETURN my_count;
+END
+$$ LANGUAGE plpgsql;
