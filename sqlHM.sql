@@ -236,3 +236,25 @@ BEGIN
 END;
 $BODY$
 LANGUAGE plpgsql;
+
+--11.Напишите процедуру, которая возвращает людей с индексом массы тела больше заданного. ИМТ = масса в кг / (рост в м)^2
+
+CREATE OR REPLACE PROCEDURE fatter(INOUT imt real)
+LANGUAGE plpgsql
+AS $$
+DECLARE 
+	cur CURSOR (input integer) FOR 
+		SELECT * 
+		FROM (SELECT p.*, p.weight/(p.growth/100)^2 AS imt FROM people p) sub
+		WHERE sub.imt > input; 
+	res people%ROWTYPE;
+BEGIN
+	OPEN cur(imt);
+	LOOP 
+		FETCH cur INTO res;
+		EXIT WHEN not found;
+		RAISE NOTICE 'name: %, surname: %', res.name, res.surname;
+	END LOOP;
+	CLOSE cur;
+END
+$$;
