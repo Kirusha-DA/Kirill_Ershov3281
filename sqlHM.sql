@@ -258,3 +258,53 @@ BEGIN
 	CLOSE cur;
 END
 $$;
+
+--12.Измените схему БД так, чтобы в БД можно было хранить родственные связи между людьми. 
+--Код должен быть представлен в виде транзакции (Например (добавление атрибута): 
+--BEGIN; ALTER TABLE people ADD COLUMN leg_size REAL; COMMIT;). 
+--Дополните БД данными.
+
+BEGIN;
+
+CREATE TABLE parent_child(
+	id integer REFERENCES people(id),
+	child_id integer REFERENCES people(id)
+)
+
+COMMIT;
+
+--13. Напишите процедуру, которая позволяет создать в БД нового человека 
+--с указанным родством.
+
+CREATE OR REPLACE PROCEDURE add_parent_child(parent_id int, child_id int)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+	INSERT INTO parent_child (id, child_id)
+	VALUES (add_parent_child.parent_id, add_parent_child.child_id);
+END
+$$;
+
+--14.Измените схему БД так, чтобы в БД можно было хранить время актуальности 
+--данных человека (выполнить также, как п.12).
+
+BEGIN;
+CREATE TABLE person_data_relevance_time(
+	person_id int Primary Key REFERENCES people(id),
+	relevance_time DATE
+)
+COMMIT;
+
+--15.Напишите процедуру, которая позволяет актуализировать рост и вес человека.
+
+CREATE OR REPLACE PROCEDURE update_weight_growth(id int, weight real, growth real)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+	UPDATE people
+	SET weight = update_weight_growth.weight, growth = update_weight_growth.growth
+	WHERE people.id = update_weight_growth.id;
+END
+$$;
+
+
