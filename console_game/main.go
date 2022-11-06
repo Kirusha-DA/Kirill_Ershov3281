@@ -18,7 +18,7 @@ func main() {
 			creature.HoleLength,
 			creature.HealthBar,
 			creature.Respect,
-			int64(creature.Weight))
+			creature.Weight)
 		if creature.HoleLength == 0 || creature.HealthBar == 0 || creature.Respect == 0 || creature.Weight == 0 {
 			fmt.Println("Defeat")
 			break
