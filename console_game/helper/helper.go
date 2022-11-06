@@ -24,7 +24,7 @@ func (c *creature) DoNight() {
 	c.Weight -= 5
 }
 
-func (c creature) DoDay(playerInput int64) {
+func (c creature) DoDay() {
 	fmt.Println("--------------DAY---------------")
 	fmt.Print("Choose:\n" +
 		"1 : Dig the hole\n" +
@@ -32,6 +32,7 @@ func (c creature) DoDay(playerInput int64) {
 		"3 : Fight\n" +
 		"4 : Sleep\n" +
 		"Type here: ")
+	var playerInput int64
 	fmt.Scan(&playerInput)
 	switch playerInput {
 	case 1:

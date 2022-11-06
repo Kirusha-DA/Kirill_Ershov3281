@@ -7,14 +7,12 @@ import (
 
 var holeLength, healthBar, respect, weight float64 = 10, 100, 20, 30
 
-var playerInput int64
-
 func main() {
 
 	creature := helper.New(holeLength, healthBar, respect, weight)
 
 	for {
-		creature.DoDay(playerInput)
+		creature.DoDay()
 		creature.DoNight()
 		fmt.Printf("holeLength %v healthBar  %v respect  %v weight  %v\n",
 			creature.HoleLength,
