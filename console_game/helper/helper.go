@@ -17,7 +17,6 @@ func New(holeLength, healthBar, respect, weight float64) *creature {
 }
 
 func (c *creature) DoNight() {
-	fmt.Println("--------------NIGHT---------------")
 	c.HoleLength -= 2
 	c.HealthBar += 20
 	c.Respect -= 2
@@ -25,7 +24,6 @@ func (c *creature) DoNight() {
 }
 
 func (c creature) DoDay() {
-	fmt.Println("--------------DAY---------------")
 	fmt.Print("Choose:\n" +
 		"1 : Dig the hole\n" +
 		"2 : Eat a grass\n" +

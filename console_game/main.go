@@ -12,7 +12,9 @@ func main() {
 	creature := helper.New(holeLength, healthBar, respect, weight)
 
 	for {
+		fmt.Println("--------------DAY---------------")
 		creature.DoDay()
+		fmt.Println("--------------NIGHT---------------")
 		creature.DoNight()
 		fmt.Printf("holeLength %v healthBar  %v respect  %v weight  %v\n",
 			creature.HoleLength,
