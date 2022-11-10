@@ -50,7 +50,7 @@ func NewStore(connString string) *Store {
 
 func (s *Store) ListPeople() ([]People, error) {
 	rows, err := s.conn.Query(context.Background(), "SELECT id, name FROM people")
-	if err != err {
+	if err != nil {
 		log.Fatal(err)
 	}
 	defer rows.Close()

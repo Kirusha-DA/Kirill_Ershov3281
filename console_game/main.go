@@ -8,7 +8,6 @@ import (
 var holeLength, healthBar, respect, weight float64 = 10, 100, 20, 30
 
 func main() {
-
 	creature := helper.New(holeLength, healthBar, respect, weight)
 
 	for {
