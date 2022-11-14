@@ -23,7 +23,7 @@ func (c *creature) DoNight() {
 	c.Weight -= 5
 }
 
-func (c creature) DoDay() {
+func (c *creature) DoDay() {
 	fmt.Print("Choose:\n" +
 		"1 : Dig the hole\n" +
 		"2 : Eat a grass\n" +
